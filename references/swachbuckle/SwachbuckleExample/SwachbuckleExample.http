@@ -1,0 +1,6 @@
+@SwachbuckleExample_HostAddress = http://localhost:5084
+
+GET {{SwachbuckleExample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

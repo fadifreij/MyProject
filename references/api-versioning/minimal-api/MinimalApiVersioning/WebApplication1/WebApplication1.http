@@ -1,0 +1,8 @@
+@WebApplication1_HostAddress = http://localhost:5146
+
+GET {{WebApplication1_HostAddress}}/api/v1/items
+Accept: application/json
+
+###
+
+GET {{WebApplication1_HostAddress}}/api/v2/items

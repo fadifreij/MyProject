@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+.hero__categories ul {
+  list-style: none;
+ 
+}
+
+.list__categories{
+  background-color: white;
+}

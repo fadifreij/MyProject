@@ -1,0 +1,11 @@
+https://github.com/dotnet/aspire-samples/tree/main/samples/AspireWithJavaScript
+
+we need to use minimum api 
+add angular 
+add react
+
+
+run migration: 
+from Migration.ps1 from dotnet folder
+
+

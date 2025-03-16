@@ -1,0 +1,75 @@
+.product-card {
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.product-card h3 {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.slick-arrow {
+    font-size: 2rem;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.slick-prev {
+    left: -60px;
+}
+
+.slick-next {
+    right: -20px;
+}
+
+.custom-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    /* Adjust width as needed */
+    height: 80px;
+    /* Adjust height as needed */
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.custom-prev {
+    left: -45px;
+    /* Adjust positioning as needed */
+}
+
+.custom-next {
+    right: -45px;
+    /* Adjust positioning as needed */
+}
+
+.custom-arrow span {
+    font-size: 1.5rem;
+    /* Adjust size as needed */
+    color: #333;
+}
+
+.custom-arrow:hover {
+    background-color: #f0f0f0;
+    /* Optional hover effect */
+}

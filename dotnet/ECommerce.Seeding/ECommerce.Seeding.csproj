@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>..\lib\Debug\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>..\lib\Release\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <Reference Include="ECommerce.DAL">
+      <HintPath>..\lib\Debug\ECommerce.DAL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Reference Include="ECommerce.DAL">
+      <HintPath>..\lib\Release\ECommerce.DAL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <Reference Include="ECommerce.Domain">
+      <HintPath>..\lib\Debug\ECommerce.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Reference Include="ECommerce.Domain">
+      <HintPath>..\lib\Release\ECommerce.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+  </ItemGroup>
+  
+  
+  <ItemGroup>
+    <Folder Include="Images\Electronics\Laptops &amp; PCs\" />
+    <Folder Include="Images\Electronics\Headphones &amp; Audio\" />
+    <Folder Include="Images\Electronics\Tablets &amp; iPads\" />
+    <Folder Include="Images\Electronics\Televisions\Hisense 32 Inch 32E4NTUK Smart HD Ready LED Freeview TV\" />
+    <Folder Include="Images\Electronics\Televisions\Hisense 40 Inch 40E4NTUK Smart Full HD LED Freeview TV\" />
+    <Folder Include="Images\Electronics\Televisions\Hisense 55 Inch 55E78NQTUK Smart 4K HDR UHD QLED Freely TV\" />
+    <Folder Include="Images\Electronics\Televisions\LG 43 Inch 43UR78006LK Smart 4K UHD HDR LED Freeview TV\" />
+    <Folder Include="Images\Electronics\Televisions\Samsung 40 Inch UE40T5300AEXXU Smart Full HD HDR LED TV\" />
+    <Folder Include="Images\Electronics\Televisions\Toshiba 43 Inch 43LV2E63DB Smart FHD HDR10 Freeview TV\" />
+    <Folder Include="Images\Electronics\Televisions\TCL 32 Inch 32SF540K Smart FHD HDR LED Fire TV\" />
+    <Folder Include="Images\Electronics\Televisions\TCL 55 Inch 55PF650K Smart 4K UHD HDR LED Freely TV\" />
+    <Folder Include="Images\Electronics\Televisions\Toshiba 50 Inch 50UV2F53DB Smart 4K UHD HDR LCD Freely TV\" />
+    <Folder Include="Images\Home and furniture\Beds\" />
+    <Folder Include="Images\Home and furniture\Home fragrance\" />
+    <Folder Include="Images\Home and furniture\Kitchen Bins\" />
+    <Folder Include="Images\Home and furniture\Table Lamps\" />
+    <Folder Include="Images\Home and furniture\Sofas\" />
+    <Folder Include="Images\Toys\Art and creativity toys\" />
+    <Folder Include="Images\Toys\LEGO\" />
+  </ItemGroup>
+  
+  
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Persistence\ECommerce.Persistence.csproj" />
+  </ItemGroup>
+  
+  
+  
+</Project>

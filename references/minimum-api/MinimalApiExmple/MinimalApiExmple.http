@@ -1,0 +1,39 @@
+@MinimalApiExmple_HostAddress = http://localhost:5160
+
+GET {{MinimalApiExmple_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{MinimalApiExmple_HostAddress}}/Items/
+Accept: application/json
+
+###
+
+GET {{MinimalApiExmple_HostAddress}}/Items/1
+Accpet: application/json
+
+###
+
+POST {{MinimalApiExmple_HostAddress}}/Items
+Content-Type: application/json
+    {
+    "ItemId": 6,
+    "ItemName": "New Item Added",
+    "ItemDescription": "Added from http file"
+    }
+
+###
+
+PUT {{MinimalApiExmple_HostAddress}}/Items/1
+Content-Type: application/json
+     {
+         "ItemId": 1,
+         "ItemName": "Updated Item Name",
+         "ItemDescription": "Updated Item Description from http file"
+     }
+
+###
+
+DELETE {{MinimalApiExmple_HostAddress}}/Items/5
+Accept: application/json

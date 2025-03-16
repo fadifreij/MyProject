@@ -1,0 +1,8 @@
+@ControllerApiVersioning_HostAddress = http://localhost:5296
+
+GET {{ControllerApiVersioning_HostAddress}}/api/v1/items
+Accept: application/json
+
+###
+GET {{ControllerApiVersioning_HostAddress}}/api/v2/items
+Accept: application/json

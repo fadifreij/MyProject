@@ -1,0 +1,10 @@
+@if(isBrowser){
+<p-carousel [value]="products()" [numVisible]="numVisible()" [numScroll]="1" [circular]="true" [autoplayInterval]="interval"
+[showNavigators]="false"
+ (onPage)="resetAutoScroll()"
+    >
+    <ng-template let-product pTemplate="item">
+        <ng-container *ngTemplateOutlet="contentTemplate; context: { $implicit: product }"></ng-container>
+    </ng-template>
+</p-carousel>
+}

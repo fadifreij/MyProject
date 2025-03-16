@@ -1,0 +1,19 @@
+.hero__categories__list {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    background-color: white;
+}
+
+.hero__categories__list.show {
+    max-height: 500px;
+    /* Set to the approximate height of the list */
+    opacity: 1;
+}
+
+.hero__categories__list.hide {
+    max-height: 0;
+    opacity: 0;
+}
+

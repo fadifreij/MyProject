@@ -1,0 +1,12 @@
+ -- This create volume on docker
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrongPassword!" -p 1434:1433 -v ./data:/var/opt/mssql --name sqlserver -d mcr.microsoft.com/mssql/server:2022-latest
+
+-- This create volum on D:\MyProject\Docker
+-- Host volume mapping for Docker on Windows does not currently support mapping the complete /var/opt/mssql directory.However, you 
+--can map a subdirectory, such as /var/opt/mssql/data to your host machine
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrongPassword!" -p 1434:1433 -v D:\MyProject\Docker\SQL_Docker_File\data:/var/opt/mssql/data --name sqlserver -d mcr.microsoft.com/mssql/server:2022-latest
+
+
+Server: localhost,1434
+Login: sa
+Password: YourStrongPassword!

@@ -1,0 +1,17 @@
+@jwt_authentication_Example_HostAddress = http://localhost:5252
+
+POST {{jwt_authentication_Example_HostAddress}}/login/
+Content-Type: application/json
+{
+    "username": "user",
+    "password": "password"
+}
+
+###
+GET {{jwt_authentication_Example_HostAddress}}/weatherforecast/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InVzZXIiLCJuYmYiOjE3MzM2NjE1ODcsImV4cCI6MTczMzY2NTE4NywiaWF0IjoxNzMzNjYxNTg3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTIiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUyNTIifQ.CUq3ghPMIF335uphPHD56QiwYq1QuqnCB0TIhBymPz0
+
+###
+
+GET {{jwt_authentication_Example_HostAddress}}/secure

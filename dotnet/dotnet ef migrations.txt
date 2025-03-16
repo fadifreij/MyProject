@@ -1,0 +1,26 @@
+dotnet ef migrations add InitialCreate --project ECommerce.DAL 
+//--startup-project ECommerce.ApiServices
+
+or you can browse to 
+D:\MyProject\dotnet
+
+and type 
+dotnet ef migrations add InitialCreate --project ./ECommerce.DAL/ECommerce.DAL.csproj --startup-project ./E-Commerce.ApiServices/ECommerce.ApiServices.csproj
+
+
+
+if you are inside the startup project either you can put 
+######################################
+dotnet ef migrations add InitialCreate --project ../ECommerce.DAL/ECommerce.DAL.csproj --startup-project .
+dotnet ef database update InitialCreate --project ../ECommerce.DAL/ECommerce.DAL.csproj --startup-project .
+
+use update-database to see the error in case of tables not created
+######################################
+
+
+or 
+
+dotnet ef migrations add InitialCreate --project ./ECommerce.DAL/ECommerce.DAL.csproj 
+
+browse to ECommerce.DAL
+dotnet ef database update

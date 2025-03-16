@@ -1,0 +1,70 @@
+# Ignore Visual Studio files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Ignore ASP.NET build results
+bin/
+obj/
+project.lock.json
+project.fragment.lock.json
+
+# Ignore additional .NET folders
+lib/
+reference/
+packages/
+
+# Ignore .NET package-related folders
+/packages/
+.nuget/
+
+# Ignore npm/Yarn dependencies and package-related files for React & Angular
+node_modules/
+# Ignore package-lock.json if you prefer Yarn (Optional)
+# package-lock.json
+yarn.lock
+
+# Ignore package archives (npm, yarn, etc.)
+*.tgz
+
+# Ignore Angular build files
+/dist/
+/out-tsc/
+
+# Ignore Angular IDE files
+.angular/
+
+# Ignore React build files
+/build/
+# Ignore npm-debug logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Ignore environment variable files (can vary depending on your setup)
+.env
+.env.local
+.env.*.local
+
+# Ignore .NET Core user secrets
+secrets/
+
+# Ignore other IDE files
+*.swp
+*.swo
+
+# Ignore log files
+*.log
+*.log.*
+
+# Ignore JetBrains IDE files
+.idea/
+*.iml
+
+# Ignore OS files
+.DS_Store
+Thumbs.db

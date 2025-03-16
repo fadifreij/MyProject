@@ -1,0 +1,14 @@
+ 
+# Use the official Microsoft SQL Server 2022 image
+FROM mcr.microsoft.com/mssql/server:2022-latest
+
+# Set environment variables for SQL Server
+ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=YourStrongPassword! # Replace with a strong password
+ENV MSSQL_PID=Developer             # Set SQL Server edition (Developer, Express, etc.)
+
+# Expose the default SQL Server port
+EXPOSE 1433
+
+# Run the SQL Server process as the entry point
+ENTRYPOINT ["/opt/mssql/bin/sqlservr"]

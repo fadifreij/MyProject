@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="carousel" 
+      (mouseenter)="stopAutoplay()" 
+      (mouseleave)="startAutoplay()"
+      >
+       
+        <div class="custom-arrow custom-prev" (click)="prevImage()" >
+            <span>&#10094;</span>
+        </div>
+
+        <div *ngFor="let image of displayedImages; let i = index" class="carousel-images">
+                <!-- <img [src]="image" [alt]="'Image ' + (currentIndex + i + 1)" /> -->
+                <ng-content></ng-content>
+        </div>
+        
+
+       
+        <div class="custom-arrow custom-next"  (click)="nextImage()">
+            <span>&#10095; </span>
+        </div>
+    </div>
+</div>
