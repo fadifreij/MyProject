@@ -2,6 +2,7 @@ using E_Commerce.ApiServices.Providers;
 using ECommerce.Persistence;
 using ECommerce.ServiceAbstraction.Common;
 using ECommerce.Services.Common;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 
@@ -51,6 +52,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    // https://localhost:7049/swagger/index.html
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+    });
 }
 
 app.UseHttpsRedirection();
