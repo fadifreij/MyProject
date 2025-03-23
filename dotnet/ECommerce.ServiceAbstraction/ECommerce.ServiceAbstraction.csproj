@@ -6,4 +6,27 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>..\lib\Debug\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>..\lib\Release\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <!-- Reference the assembly from the Debug folder -->
+    <Reference Include="ECommerce.ServiceAbstraction">
+      <HintPath>..\lib\Debug\ECommerce.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <!-- Reference the assembly from the Release folder -->
+    <Reference Include="ECommerce.ServiceAbstraction">
+      <HintPath>..\..\Release\ECommerce.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

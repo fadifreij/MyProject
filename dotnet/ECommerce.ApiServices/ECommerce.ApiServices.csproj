@@ -51,4 +51,42 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <Reference Include="ECommerce.ServiceAbstraction">
+      <HintPath>..\lib\Debug\ECommerce.ServiceAbstraction.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Reference Include="ECommerce.ServiceAbstraction">
+      <HintPath>..\lib\Release\ECommerce.ServiceAbstraction.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <Reference Include="ECommerce.Services">
+      <HintPath>..\lib\Debug\ECommerce.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Reference Include="ECommerce.Services">
+      <HintPath>..\lib\Release\ECommerce.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+  
+  
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <Reference Include="ECommerce.Presentation">
+      <HintPath>..\lib\Debug\ECommerce.Presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Reference Include="ECommerce.Presentation">
+      <HintPath>..\lib\Release\ECommerce.Presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

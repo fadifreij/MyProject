@@ -1,6 +1,11 @@
 using E_Commerce.ApiServices.Providers;
-using System;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using ECommerce.Persistence;
+using ECommerce.ServiceAbstraction.Common;
+using ECommerce.Services.Common;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,11 +17,23 @@ builder.Services.AddOpenApi();
 // Read the database provider from configuration
 var databaseProvider = builder.Configuration["DatabaseProvider"]??"";
 
+
+
+
 builder.AddDatabaseContext(databaseProvider);
 
 
+builder.Services.AddServices();
+builder.Services.AddControllers();
+//builder.Services.AddControllers().
+///               AddApplicationPart(typeof(AssemblyReference).Assembly);
+
+builder.Services.AddControllers();
 
 
+
+//var controllers = builder.Services.BuildServiceProvider().GetServices<ControllerBase>();
+//Console.WriteLine($"Found {controllers.Count()} controllers.");
 
 var app = builder.Build();
 
@@ -58,7 +75,7 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
-
+app.MapControllers();
 app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

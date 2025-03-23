@@ -68,3 +68,6 @@ secrets/
 # Ignore OS files
 .DS_Store
 Thumbs.db
+
+WhatsDone.txt
+Docker/SQL_Docker_File/data
