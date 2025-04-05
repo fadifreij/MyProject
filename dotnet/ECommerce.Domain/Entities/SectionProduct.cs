@@ -1,19 +1,21 @@
 ﻿using ECommerce.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace E_Commerce.Domain.Entities
 {
+    [Table("section_product")]
     public class SectionProduct
     {
         public int SectionId { get; set; }
-        public Section Section { get; } = new Section();
+        public Section Section { get; set; } = new Section();
 
 
         public int ProductId { get; set; }
-        public Product Product { get; } = new Product();
+        public Product Product { get; set; } = new Product();
     }
 }

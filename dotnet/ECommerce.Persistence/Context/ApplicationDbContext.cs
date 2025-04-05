@@ -26,15 +26,23 @@ namespace ECommerce.Persistence
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImages> ProductImages { get; set; }
 
+
+        public DbSet<SectionProduct> SectionProduct { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
 
-             // modelBuilder.Entity<SectionProduct>()
-             //.HasKey(e => new { e.ProductId, e.SectionId }); // Composite key
 
-            // DbSeeding.Seed(modelBuilder);
-
+            modelBuilder.Entity<SectionProduct>()
+        .HasKey(sp => new { sp.SectionId, sp.ProductId });
+            modelBuilder.Entity<SectionProduct>()
+                .HasOne(sp => sp.Section)
+                .WithMany(s => s.SectionProducts)
+                .HasForeignKey(sp => sp.SectionId);
+            modelBuilder.Entity<SectionProduct>()
+                .HasOne(sp => sp.Product)
+                .WithMany(p => p.SectionProducts)
+                .HasForeignKey(sp=> sp.ProductId);
 
         }
 

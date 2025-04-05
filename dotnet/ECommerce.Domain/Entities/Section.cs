@@ -1,4 +1,5 @@
-﻿using ECommerce.Domain.Common;
+﻿using E_Commerce.Domain.Entities;
+using ECommerce.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,5 +22,8 @@ namespace ECommerce.Domain.Entities
         [StringLength(250)]
         
         public string? DisplayName { get; set; } = string.Empty;
+
+
+        public ICollection<SectionProduct>? SectionProducts { get; set; }
     }
 }

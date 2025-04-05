@@ -31,8 +31,10 @@ namespace E_Commerce.Domain.Entities
 
         public string? Description { get; set; }
 
-        public ICollection<ProductImages>? ProductImages { get; }    
-   
+        public ICollection<ProductImages>? ProductImages { get; }  
+        
+        public ICollection<SectionProduct>? SectionProducts { get; set; } 
+
     }
     [Table("product_images")]
     public class ProductImages: BaseEntity
