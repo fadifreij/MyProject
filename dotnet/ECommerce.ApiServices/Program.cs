@@ -1,7 +1,6 @@
 using E_Commerce.ApiServices.Providers;
 using ECommerce.Persistence;
 using ECommerce.ServiceAbstraction.Common;
-using ECommerce.Services.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;

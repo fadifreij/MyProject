@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerce.Domain.Entities;
+using ECommerce.ServiceAbstraction;
 using ECommerce.ServiceAbstraction.Common;
 using Microsoft.AspNetCore.Mvc;
 namespace ECommerce.Presentation.Controllers
@@ -12,9 +13,9 @@ namespace ECommerce.Presentation.Controllers
     [Route("api/Categories")]
     public class CategoryController : ControllerBase
     {
-        private readonly IGenericRepository<Category> _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryController(IGenericRepository<Category> categoryRepository)
+        public CategoryController(ICategoryRepository categoryRepository)
         {
             this._categoryRepository = categoryRepository;
         }
