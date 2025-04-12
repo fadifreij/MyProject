@@ -16,7 +16,8 @@ namespace E_Commerce.ApiServices.Providers
            // services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-           
+            services.AddScoped<IProductRepository, ProductRepository>();
+
         }
     }
 }

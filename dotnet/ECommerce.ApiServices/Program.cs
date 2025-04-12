@@ -4,6 +4,7 @@ using ECommerce.ServiceAbstraction.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
+using System.Text.Json.Serialization;
 
 
 
@@ -28,7 +29,12 @@ builder.Services.AddControllers();
 //builder.Services.AddControllers().
 ///               AddApplicationPart(typeof(AssemblyReference).Assembly);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 
 
