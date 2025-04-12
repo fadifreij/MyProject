@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.UnitTest.Entities
 {
-    public class CategoryModelTest
+    public class CategoryModelTest : CommonModelTest
     {
         [Fact]
         public void Category_WithValidData_ShouldPassValidation()
@@ -49,13 +49,7 @@ namespace ECommerce.UnitTest.Entities
             Assert.Contains(results, r => r.MemberNames.Contains(nameof(Category.CategoryName)));
         }
 
-        private IList<ValidationResult> ValidateModel(object model)
-        {
-            var validationResults = new List<ValidationResult>();
-            var validationContext = new ValidationContext(model, null, null);
-            Validator.TryValidateObject(model, validationContext, validationResults, true);
-            return validationResults;
-        }
+       
 
 
 

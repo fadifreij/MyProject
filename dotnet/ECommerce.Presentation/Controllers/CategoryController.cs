@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ECommerce.Presentation.Controllers
 {
     [ApiController]
-    [Route("api/Categories")]
+    [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
