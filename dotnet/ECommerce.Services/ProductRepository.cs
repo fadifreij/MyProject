@@ -15,22 +15,22 @@ namespace ECommerce.Services
         {
             this._context = context;
         }
-        public async Task<IEnumerable<Product>> GetProductsByDepartment(int departmentId)
+        public async Task<IEnumerable<Product>> GetProductsByDepartment(int departmentId, CancellationToken cancellationToken)
         {
            return await _context.Set<Product>()
                 .Where(p => p.DepartmentId == departmentId)
                 .Include(p=>p.ProductImages)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Product>> GetProductsBySection(int sectionId)
+        public async Task<IEnumerable<Product>> GetProductsBySection(int sectionId, CancellationToken cancellationToken)
         {
             return await _context.Set<SectionProduct>()
                 .Where(sp => sp.SectionId == sectionId)
                 .Include(sp => sp.Product)
                 .ThenInclude(p => p.ProductImages)
                 .Select(sp => sp.Product)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
     }
 }

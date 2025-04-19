@@ -9,8 +9,8 @@ namespace ECommerce.ServiceAbstraction
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetProductsByDepartment(int departmentId);
+        Task<IEnumerable<Product>> GetProductsByDepartment(int departmentId, CancellationToken cancellation);
 
-        Task<IEnumerable<Product>> GetProductsBySection(int sectionId);
+        Task<IEnumerable<Product>> GetProductsBySection(int sectionId, CancellationToken cancellation);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Domain.Entities;
 using ECommerce.Domain.Entities;
+using ECommerce.Presentation.Filters;
 using ECommerce.ServiceAbstraction;
 using ECommerce.ServiceAbstraction.Common;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace ECommerce.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DepartmentController : ControllerBase
+    public class DepartmentController : BaseController
     {
         private readonly IDepartmentRepository _departmentRepository;
 
@@ -23,9 +24,11 @@ namespace ECommerce.Presentation.Controllers
         }
        
         [HttpGet("{CategoryId:int}")]
+        [ValidatePositiveInt("CategoryId")]
         public async Task<IActionResult> GetDepartmentsByCategoryId(int CategoryId, CancellationToken cancellationToken = default)
         {
-            return Ok(await _departmentRepository.GetDepartmentsByCategoryId(CategoryId));
+            
+            return await HandleRequestAsync(() => _departmentRepository.GetDepartmentsByCategoryId(CategoryId,cancellationToken));
         }
     }
 }

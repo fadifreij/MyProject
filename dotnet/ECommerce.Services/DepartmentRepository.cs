@@ -19,9 +19,9 @@ namespace ECommerce.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Department>> GetDepartmentsByCategoryId(int CategoryId)
+        public async Task<IEnumerable<Department>> GetDepartmentsByCategoryId(int CategoryId ,CancellationToken cancellationToken = default)
         {
-            return  await _context.Set<Department>().Where(x=>x.CategoryId == CategoryId).ToListAsync();
+            return  await _context.Set<Department>().Where(x=>x.CategoryId == CategoryId).ToListAsync(cancellationToken);
         }
     }
 

@@ -11,7 +11,7 @@ namespace ECommerce.ServiceAbstraction
    
         public interface IDepartmentRepository : IGenericRepository<Department>
         {
-           public  Task<IEnumerable<Department>> GetDepartmentsByCategoryId(int CategoryId);
+           public  Task<IEnumerable<Department>> GetDepartmentsByCategoryId(int CategoryId, CancellationToken cancellation);
         }
     
 }

@@ -22,14 +22,14 @@ namespace ECommerce.Presentation.Controllers
         [HttpGet("GetProductsByDepartment/{DepartmentId}")]
         public async Task<IActionResult> GetProductsByDepartment(int DepartmentId, CancellationToken cancellationToken = default)
         {
-            return Ok(await _productRepository.GetProductsByDepartment(DepartmentId));
+            return Ok(await _productRepository.GetProductsByDepartment(DepartmentId,cancellationToken));
         }
 
 
         [HttpGet("GetProductsBySection/{SectionId}")]
         public async Task<IActionResult> GetProductsBySection(int SectionId, CancellationToken cancellationToken = default)
         {
-            return Ok(await _productRepository.GetProductsBySection(SectionId));
+            return Ok(await _productRepository.GetProductsBySection(SectionId,cancellationToken));
         }
     }
 }

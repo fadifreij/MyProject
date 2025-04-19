@@ -26,10 +26,10 @@ namespace ECommerce.UnitTest
         {
             // Arrange
             var entities = new List<BaseEntity> { _testEntity };
-            _mockRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(entities);
+            _mockRepository.Setup(repo => repo.GetAllAsync(It.IsAny<CancellationToken>())).ReturnsAsync(entities);
 
             // Act
-            var result = await _mockRepository.Object.GetAllAsync();
+            var result = await _mockRepository.Object.GetAllAsync(It.IsAny<CancellationToken>());
 
             // Assert
             Assert.NotNull(result);
@@ -41,10 +41,10 @@ namespace ECommerce.UnitTest
         public async Task GetByIdAsync_ShouldReturnEntityById()
         {
             // Arrange
-            _mockRepository.Setup(repo => repo.GetByIdAsync(_testEntity.Id)).ReturnsAsync(_testEntity);
+            _mockRepository.Setup(repo => repo.GetByIdAsync(_testEntity.Id, It.IsAny<CancellationToken>())).ReturnsAsync(_testEntity);
 
             // Act
-            var result = await _mockRepository.Object.GetByIdAsync(_testEntity.Id);
+            var result = await _mockRepository.Object.GetByIdAsync(_testEntity.Id, It.IsAny<CancellationToken>());
 
             // Assert
             Assert.NotNull(result);
@@ -57,10 +57,10 @@ namespace ECommerce.UnitTest
             // Arrange
             var entities = new List<BaseEntity> { _testEntity };
             Expression<Func<BaseEntity, bool>> predicate = e => e.Id == _testEntity.Id;
-            _mockRepository.Setup(repo => repo.FindAsync(predicate)).ReturnsAsync(entities);
+            _mockRepository.Setup(repo => repo.FindAsync(predicate,It.IsAny<CancellationToken>())).ReturnsAsync(entities);
 
             // Act
-            var result = await _mockRepository.Object.FindAsync(predicate);
+            var result = await _mockRepository.Object.FindAsync(predicate, It.IsAny<CancellationToken>());
 
             // Assert
             Assert.NotNull(result);
@@ -72,39 +72,39 @@ namespace ECommerce.UnitTest
         public async Task AddAsync_ShouldAddEntity()
         {
             // Arrange
-            _mockRepository.Setup(repo => repo.AddAsync(_testEntity)).Returns(Task.CompletedTask);
+            _mockRepository.Setup(repo => repo.AddAsync(_testEntity, It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
 
             // Act
-            await _mockRepository.Object.AddAsync(_testEntity);
+            await _mockRepository.Object.AddAsync(_testEntity, It.IsAny<CancellationToken>());
 
             // Assert
-            _mockRepository.Verify(repo => repo.AddAsync(_testEntity), Times.Once);
+            _mockRepository.Verify(repo => repo.AddAsync(_testEntity, It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Fact]
         public async Task UpdateAsync_ShouldUpdateEntity()
         {
             // Arrange
-            _mockRepository.Setup(repo => repo.UpdateAsync(_testEntity)).Returns(Task.CompletedTask);
+            _mockRepository.Setup(repo => repo.UpdateAsync(_testEntity, It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
 
             // Act
-            await _mockRepository.Object.UpdateAsync(_testEntity);
+            await _mockRepository.Object.UpdateAsync(_testEntity, It.IsAny<CancellationToken>());
 
             // Assert
-            _mockRepository.Verify(repo => repo.UpdateAsync(_testEntity), Times.Once);
+            _mockRepository.Verify(repo => repo.UpdateAsync(_testEntity, It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Fact]
         public async Task DeleteAsync_ShouldDeleteEntityById()
         {
             // Arrange
-            _mockRepository.Setup(repo => repo.DeleteAsync(_testEntity.Id)).Returns(Task.CompletedTask);
+            _mockRepository.Setup(repo => repo.DeleteAsync(_testEntity.Id,It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
 
             // Act
-            await _mockRepository.Object.DeleteAsync(_testEntity.Id);
+            await _mockRepository.Object.DeleteAsync(_testEntity.Id, It.IsAny<CancellationToken>());
 
             // Assert
-            _mockRepository.Verify(repo => repo.DeleteAsync(_testEntity.Id), Times.Once);
+            _mockRepository.Verify(repo => repo.DeleteAsync(_testEntity.Id, It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }

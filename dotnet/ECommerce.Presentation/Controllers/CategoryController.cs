@@ -7,11 +7,12 @@ using ECommerce.Domain.Entities;
 using ECommerce.ServiceAbstraction;
 using ECommerce.ServiceAbstraction.Common;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace ECommerce.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CategoryController : ControllerBase
+    public class CategoryController : BaseController
     {
         private readonly ICategoryRepository _categoryRepository;
 
@@ -23,8 +24,8 @@ namespace ECommerce.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCategories(CancellationToken cancellationToken = default)
         {
+           return await HandleRequestAsync(() => _categoryRepository.GetAllAsync(cancellationToken));
 
-            return Ok(await _categoryRepository.GetAllAsync());
         }
        
     }
