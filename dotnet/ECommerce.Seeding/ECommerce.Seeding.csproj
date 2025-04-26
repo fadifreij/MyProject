@@ -17,19 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <Reference Include="ECommerce.DAL">
-      <HintPath>..\lib\Debug\ECommerce.DAL.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <Reference Include="ECommerce.DAL">
-      <HintPath>..\lib\Release\ECommerce.DAL.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
     <Reference Include="ECommerce.Domain">
       <HintPath>..\lib\Debug\ECommerce.Domain.dll</HintPath>
     </Reference>

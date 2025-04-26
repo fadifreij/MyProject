@@ -11,7 +11,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace ECommerce.Presentation.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/Categories")]
     public class CategoryController : BaseController
     {
         private readonly ICategoryRepository _categoryRepository;

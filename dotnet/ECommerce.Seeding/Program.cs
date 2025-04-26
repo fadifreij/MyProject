@@ -42,6 +42,15 @@ dataInserter.Insert(SectionData.sections, "sections");
 
 
 
+//////////////////////////////
+// Section_Product Table    //
+//////////////////////////////
+dataInserter.Insert(SectionProductData.sectionProducts, "section_product", false);
+
+
+
+
+
 
 
 

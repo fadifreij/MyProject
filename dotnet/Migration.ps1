@@ -8,7 +8,7 @@ dotnet build ./ECommerce.ApiServices/ECommerce.ApiServices.csproj
 
 
 # Create migration
-dotnet ef migrations add InitialCreate --project ./ECommerce.DAL/ECommerce.DAL.csproj --startup-project ./ECommerce.ApiServices/ECommerce.ApiServices.csproj
+dotnet ef migrations add InitialCreate --project ./ECommerce.Persistence/ECommerce.Persistence.csproj --startup-project ./ECommerce.ApiServices/ECommerce.ApiServices.csproj
 
 # Rebuild the solutions 
 dotnet build ./ECommerce.Domain/ECommerce.Domain.csproj

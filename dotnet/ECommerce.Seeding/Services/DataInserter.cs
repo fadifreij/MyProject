@@ -25,20 +25,22 @@ namespace ECommerce.Seeding.Services
 
         }
 
-        public void Insert<T>(IEnumerable<T> data, string tableName)  where T: BaseEntity
+        public void Insert<T>(IEnumerable<T> data, string tableName, bool identityInsert =true) where T :class
         {
             
             Console.WriteLine($"Inserting to {tableName} Table ...");
             
             using var transaction = _context.Database.BeginTransaction();
             // Enable IDENTITY_INSERT for the table
-            _context.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} ON;");
+            if(identityInsert)
+               _context.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} ON;");
 
             _context.Set<T>().AddRange(data);
             _context.SaveChanges();
 
             // Disable IDENTITY_INSERT for the table
-            _context.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} OFF;");
+            if(identityInsert)
+              _context.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} OFF;");
             transaction.Commit();
             Console.WriteLine($"{tableName} Table seeded successfully ...");
             Console.WriteLine("------------------------------------------");

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ECommerce.Presentation.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/Departments")]
     public class DepartmentController : BaseController
     {
         private readonly IDepartmentRepository _departmentRepository;
