@@ -71,3 +71,6 @@ Thumbs.db
 
 WhatsDone.txt
 Docker/SQL_Docker_File/data
+dotnet/Add_Migration.ps1
+dotnet/ECommerce.Persistence/Migrations
+
