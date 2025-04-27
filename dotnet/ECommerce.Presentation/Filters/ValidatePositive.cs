@@ -12,9 +12,9 @@ namespace ECommerce.Presentation.Filters
     {
         private readonly string[] parameterNames;
 
-        public ValidatePositiveIntAttribute(params string[] parameterName)
+        public ValidatePositiveIntAttribute(params string[] parameterNames)
         {
-            this.parameterNames = parameterNames ?? [];
+            this.parameterNames = parameterNames;
         }
 
 

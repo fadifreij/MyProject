@@ -29,7 +29,8 @@ namespace ECommerce.Presentation.Controllers
 
         // ~/api/ The ~ means “start from the root of the application
         [HttpGet("~/api/Category/{CategoryId}/Section/{SectionId}/GetProducts")]
-        public async Task<IActionResult> GetProductsBySectionint (int SectionId, int CategoryId, CancellationToken cancellationToken = default)
+        [ValidatePositiveInt("CategoryId", "SectionId")]    
+        public async Task<IActionResult> GetProductsBySectionint (int CategoryId, int SectionId, CancellationToken cancellationToken = default)
         {
             return Ok(await _productRepository.GetProductsByCategoryBySection(CategoryId,SectionId,cancellationToken));
         }
