@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerce.Domain.Entities;
+using ECommerce.Presentation.Filters;
 using ECommerce.ServiceAbstraction;
 using ECommerce.ServiceAbstraction.Common;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,14 @@ namespace ECommerce.Presentation.Controllers
            return await HandleRequestAsync(() => _categoryRepository.GetAllAsync(cancellationToken));
 
         }
-       
+
+
+        [HttpGet("{CategoryId:int}")]
+        [ValidatePositiveInt("CategoryId")]
+        public async Task<IActionResult> GetCategoryById(int CategoryId, CancellationToken cancellationToken = default)
+        {
+            return await HandleRequestAsync(() => _categoryRepository.GetByIdAsync(CategoryId, cancellationToken));
+        }
+
     }
 }
