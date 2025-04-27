@@ -1,4 +1,5 @@
-﻿using ECommerce.ServiceAbstraction;
+﻿using ECommerce.Presentation.Filters;
+using ECommerce.ServiceAbstraction;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,16 +21,18 @@ namespace ECommerce.Presentation.Controllers
         }
 
         [HttpGet("GetProductsByDepartment/{DepartmentId}")]
+        [ValidatePositiveInt("CategoryId")]
         public async Task<IActionResult> GetProductsByDepartment(int DepartmentId, CancellationToken cancellationToken = default)
         {
             return Ok(await _productRepository.GetProductsByDepartment(DepartmentId,cancellationToken));
         }
 
-
-        [HttpGet("GetProductsBySection/{SectionId}")]
-        public async Task<IActionResult> GetProductsBySection(int SectionId, CancellationToken cancellationToken = default)
+        // ~/api/ The ~ means “start from the root of the application
+        [HttpGet("~/api/Category/{CategoryId}/Section/{SectionId}/GetProducts")]
+        public async Task<IActionResult> GetProductsBySectionint (int SectionId, int CategoryId, CancellationToken cancellationToken = default)
         {
-            return Ok(await _productRepository.GetProductsBySection(SectionId,cancellationToken));
+            return Ok(await _productRepository.GetProductsByCategoryBySection(CategoryId,SectionId,cancellationToken));
         }
+       
     }
 }

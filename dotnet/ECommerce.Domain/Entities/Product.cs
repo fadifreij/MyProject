@@ -26,12 +26,12 @@ namespace E_Commerce.Domain.Entities
         public float RateReview { get; set; }
         public int Qty { get; set; }
 
-        public Department? Department { get; } 
+        public Department? Department { get; set; } 
         public int DepartmentId { get; set; }
 
         public string? Description { get; set; }
 
-        public ICollection<ProductImages>? ProductImages { get; }  
+        public ICollection<ProductImages>? ProductImages { get; set; }  
         
         public ICollection<SectionProduct>? SectionProducts { get; set; } 
 

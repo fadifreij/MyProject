@@ -3,6 +3,7 @@ using ECommerce.Persistence;
 using ECommerce.ServiceAbstraction;
 using ECommerce.Services.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 
 namespace ECommerce.Services
@@ -23,14 +24,24 @@ namespace ECommerce.Services
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Product>> GetProductsBySection(int sectionId, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Product>> GetProductsByCategoryBySection(int categoryId, int sectionId, CancellationToken cancellationToken)
         {
-            return await _context.Set<SectionProduct>()
-                .Where(sp => sp.SectionId == sectionId)
-                .Include(sp => sp.Product)
-                .ThenInclude(p => p.ProductImages)
-                .Select(sp => sp.Product)
-                .ToListAsync(cancellationToken);
+           
+                
+                var result = await _context.Set<SectionProduct>()
+                                .Where(sp => sp.SectionId == sectionId)
+                                .Include(sp => sp.Product)
+                                .ThenInclude(p => p!.ProductImages)
+                                .Include(sp => sp.Product)
+                                .ThenInclude(d => d!.Department)
+                                .Where(sp => sp.Product!.DepartmentId == categoryId)
+                                .Select(sp => sp.Product)
+                                .ToListAsync(cancellationToken);
+                return result!;
+            
+            
+            
+            
         }
     }
 }

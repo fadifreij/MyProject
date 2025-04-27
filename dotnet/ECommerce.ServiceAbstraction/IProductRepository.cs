@@ -11,6 +11,6 @@ namespace ECommerce.ServiceAbstraction
     {
         Task<IEnumerable<Product>> GetProductsByDepartment(int departmentId, CancellationToken cancellation);
 
-        Task<IEnumerable<Product>> GetProductsBySection(int sectionId, CancellationToken cancellation);
+        Task<IEnumerable<Product>> GetProductsByCategoryBySection(int categoryId, int sectionId, CancellationToken cancellation);
     }
 }

@@ -10,22 +10,25 @@ namespace ECommerce.Presentation.Filters
 {
     public class ValidatePositiveIntAttribute :  ActionFilterAttribute
     {
-        private readonly string parameterName;
+        private readonly string[] parameterNames;
 
-        public ValidatePositiveIntAttribute(string parameterName)
+        public ValidatePositiveIntAttribute(params string[] parameterName)
         {
-            this.parameterName = parameterName;
+            this.parameterNames = parameterNames ?? [];
         }
 
 
         public override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-           if (context.ActionArguments.TryGetValue(parameterName, out var value) && value is int intValue && intValue <=0)
+            foreach (var paramName in parameterNames)
             {
-                if (intValue <= 0)
+                if (context.ActionArguments.TryGetValue(paramName, out var value) && value is int intValue && intValue <= 0)
                 {
-                    context.Result = new BadRequestObjectResult($"{parameterName} must be a positive integer.");
-                    return Task.CompletedTask;
+                    if (intValue <= 0)
+                    {
+                        context.Result = new BadRequestObjectResult($"{paramName} must be a positive integer.");
+                        return Task.CompletedTask;
+                    }
                 }
             }
 

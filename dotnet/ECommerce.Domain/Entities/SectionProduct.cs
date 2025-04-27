@@ -12,10 +12,10 @@ namespace E_Commerce.Domain.Entities
     public class SectionProduct
     {
         public int SectionId { get; set; }
-        public Section Section { get; set; } = new Section();
+        public Section? Section { get; set; } 
 
 
         public int ProductId { get; set; }
-        public Product Product { get; set; } = new Product();
+        public Product? Product { get; set; }
     }
 }

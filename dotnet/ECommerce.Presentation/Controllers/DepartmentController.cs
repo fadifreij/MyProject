@@ -23,7 +23,7 @@ namespace ECommerce.Presentation.Controllers
             this._departmentRepository = departmentRepository;
         }
        
-        [HttpGet("{CategoryId:int}")]
+        [HttpGet("Category/{CategoryId:int}/GetDepartments")]
         [ValidatePositiveInt("CategoryId")]
         public async Task<IActionResult> GetDepartmentsByCategoryId(int CategoryId, CancellationToken cancellationToken = default)
         {
