@@ -636,6 +636,8 @@ ol {
     padding-left: 18px;
     padding-top: 11px;
     position: relative;
+    cursor: pointer;
+    user-select: none;
 }
 
 .hero__search__form form .hero__search__categories:after {

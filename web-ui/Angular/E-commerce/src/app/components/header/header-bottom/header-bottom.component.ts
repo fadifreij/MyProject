@@ -1,12 +1,17 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {  provideAnimations } from '@angular/platform-browser/animations';
+import { ClickOutsideDirective } from './click-outside.directive';
 
+enum Comp {
+    Category = 'categories',
+    Department = 'departments',
+}
 @Component({
     selector: 'app-header-bottom',
     imports: [
         CommonModule,
+        ClickOutsideDirective
     ],
     templateUrl: './header-bottom.component.html',
     styleUrl: './header-bottom.component.css',
@@ -29,8 +34,18 @@ import {  provideAnimations } from '@angular/platform-browser/animations';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderBottomComponent {
-  isOpen = false;
-  toggleList() {
-    this.isOpen = !this.isOpen;
-  }
+  isOpen :Record<Comp, boolean> ={
+    [Comp.Category]: false,
+    [Comp.Department]: true,
+  };
+  toggleList(Comp: string) {
+    const key = Comp as Comp;
+    this.isOpen[key] = !this.isOpen[key];
+  
+  } 
+  closeList(name : string) {
+        const key = name as Comp;
+        this.isOpen[key] = false;
+    }
+
  }

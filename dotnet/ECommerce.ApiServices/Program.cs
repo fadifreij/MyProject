@@ -25,7 +25,7 @@ builder.AddDatabaseContext(databaseProvider);
 
 
 builder.Services.AddServices();
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 //builder.Services.AddControllers().
 ///               AddApplicationPart(typeof(AssemblyReference).Assembly);
 
