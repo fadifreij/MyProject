@@ -1,11 +1,50 @@
 :host {
   display: block;
 }
+
 .hero__categories ul {
   list-style: none;
- 
+
 }
 
-.list__categories{
+.list__categories {
   background-color: white;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.list__cat {
+  position: absolute;
+  /*top: 100%;*/
+  /* Position it just below the toggle div */
+  top: 40px;
+  left: 0px;
+  z-index: 1000;
+  /* Ensure it appears on top of other content */
+  background-color: white;
+  /* Optional: make it stand out */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  /* Optional: add drop shadow */
+
+  width: 200px;
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+}
+
+.list__cat a {
+  font-size: 16px;
+  color: #1c1c1c;
+  line-height: 39px;
+  display: block;
+  font-weight: normal;
+  /* Ensure the font is not bold */
+}
+
+.dropdown-wrapper {
+
+  overflow: visible;
+
 }

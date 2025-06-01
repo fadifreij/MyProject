@@ -74,3 +74,8 @@ Docker/SQL_Docker_File/data
 dotnet/Add_Migration.ps1
 dotnet/ECommerce.Persistence/Migrations
 
+dotnet/desktop.ini
+dotnet/Db schema.txt
+dotnet/folderico-PezzDs.ico
+web-ui/desktop.ini
+web-ui/folderico-crxVCi.ico

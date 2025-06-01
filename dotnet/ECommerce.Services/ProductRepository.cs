@@ -1,4 +1,5 @@
-﻿using E_Commerce.Domain.Entities;
+﻿using E_Commerce.Domain.DTO;
+using E_Commerce.Domain.Entities;
 using ECommerce.Persistence;
 using ECommerce.ServiceAbstraction;
 using ECommerce.Services.Common;
@@ -16,15 +17,41 @@ namespace ECommerce.Services
         {
             this._context = context;
         }
-        public async Task<IEnumerable<Product>> GetProductsByDepartment(int departmentId, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProductDTO>> GetProductsByDepartmentAsync(int departmentId, CancellationToken cancellationToken)
         {
-           return await _context.Set<Product>()
+          var products = await _context.Set<Product>()
                 .Where(p => p.DepartmentId == departmentId)
                 .Include(p=>p.ProductImages)
                 .ToListAsync(cancellationToken);
+
+            var dtos = products.Select(p => new ProductDTO
+            {
+                Id = p.Id,
+                ProductName = p.ProductName,
+                Price = p.Price,
+                Discount = p.Discount,
+                IsAvailable = p.IsAvailable,
+                RateReview = p.RateReview,
+                Qty = p.Qty,
+                DepartmentId = p.DepartmentId,
+                DepartmentName = p.Department?.DepartmentName ?? "",
+                Description = p.Description,
+                ProductImages = p.ProductImages?.Select(img => new ProductImageDTO
+                {
+                    Id = img.Id,
+                    ProductImage = img.ProductImage
+                }).ToList(),
+
+                Sections = p.SectionProducts?.Select(sp => new SectionDTO
+                {
+                    SectionId = sp.Section.Id,
+                    SectionName = sp.Section.SectionName
+                }).ToList() 
+            });
+            return dtos.ToList();
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByCategoryBySection(int categoryId, int sectionId, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Product>> GetProductsByCategoryBySectionAsync(int categoryId, int sectionId, CancellationToken cancellationToken)
         {
            
                 

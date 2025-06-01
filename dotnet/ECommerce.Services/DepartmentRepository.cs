@@ -1,4 +1,5 @@
-﻿using E_Commerce.Domain.Entities;
+﻿using E_Commerce.Domain.DTO;
+using E_Commerce.Domain.Entities;
 using ECommerce.Persistence;
 using ECommerce.ServiceAbstraction;
 using ECommerce.Services.Common;
@@ -19,9 +20,21 @@ namespace ECommerce.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Department>> GetDepartmentsByCategoryId(int CategoryId ,CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Department>> GetDepartmentsByCategoryIdAsync(int CategoryId ,CancellationToken cancellationToken = default)
         {
             return  await _context.Set<Department>().Where(x=>x.CategoryId == CategoryId).ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<DepartmentDTO>> GetAllDepartmentsAsync(CancellationToken cancellationToken = default)
+        {
+            var departments = await GetAllAsync(cancellationToken);
+            var departmentDtos = departments.Select(d => new DepartmentDTO
+            {
+                Id = d.Id,
+                DepartmentName = d.DepartmentName,
+                CategoryId = d.CategoryId
+            }).OrderBy(x=>x.DepartmentName);
+            return departmentDtos.ToList();
         }
     }
 

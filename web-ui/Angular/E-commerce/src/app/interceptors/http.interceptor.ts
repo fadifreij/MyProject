@@ -16,7 +16,7 @@ export const httpInterceptor:HttpInterceptorFn = (req, next) =>{
             } else if (error.status === 500) {
                 console.error('Server error occurred');
             } else {
-                console.error('Unhandled HTTP error', error);
+                console.error('Unhandled HTTP error', error );
             }
 
             return throwError(() => error);

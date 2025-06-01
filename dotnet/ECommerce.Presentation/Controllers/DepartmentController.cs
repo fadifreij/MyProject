@@ -23,12 +23,18 @@ namespace ECommerce.Presentation.Controllers
             this._departmentRepository = departmentRepository;
         }
        
-        [HttpGet("Category/{CategoryId:int}/GetDepartments")]
+        [HttpGet("ByCategory/{CategoryId:int}/Get")]
         [ValidatePositiveInt("CategoryId")]
-        public async Task<IActionResult> GetDepartmentsByCategoryId(int CategoryId, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetDepartmentsByCategoryIdAsync(int CategoryId, CancellationToken cancellationToken = default)
         {
             
-            return await HandleRequestAsync(() => _departmentRepository.GetDepartmentsByCategoryId(CategoryId,cancellationToken));
+            return await HandleRequestAsync(() => _departmentRepository.GetDepartmentsByCategoryIdAsync(CategoryId,cancellationToken));
+        }
+        [HttpGet()]
+        public async Task<IActionResult> GetAllDepartmentsAsync (CancellationToken cancellationToken)
+        {
+           
+            return await HandleRequestAsync(() => _departmentRepository.GetAllAsync(cancellationToken));
         }
     }
 }

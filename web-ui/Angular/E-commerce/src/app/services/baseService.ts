@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { isPlatformBrowser } from '@angular/common';
+import { inject, PLATFORM_ID } from '@angular/core';
 export abstract class BaseService<T> {
     private Url: string;
 
@@ -37,5 +39,22 @@ export abstract class BaseService<T> {
         return this.http.get(`${this.Url}/${endpoint}`, { params });
     }
 
-    // Custom POST/PUT/DELETE can be added similarly
+    protected getCachedData<T>(key: string, fetchFn: () => Observable<T>): Observable<T> {
+        const platformId = inject(PLATFORM_ID);
+        if (isPlatformBrowser(platformId)) {
+            const cached = localStorage.getItem(key);
+            if (cached) {
+                return of(JSON.parse(cached));
+            } else {
+                return fetchFn().pipe(
+                    tap(data => localStorage.setItem(key, JSON.stringify(data)))
+                );
+            }
+        }
+
+        // Either not in browser or caching disabled
+        return fetchFn();
+      }
+
+
 }

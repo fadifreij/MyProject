@@ -25,7 +25,8 @@ namespace ECommerce.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCategories(CancellationToken cancellationToken = default)
         {
-           return await HandleRequestAsync(() => _categoryRepository.GetAllAsync(cancellationToken));
+             return await HandleRequestAsync(() => _categoryRepository.GetCategoriesAsync(cancellationToken));
+           
 
         }
 

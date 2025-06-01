@@ -24,7 +24,7 @@ namespace ECommerce.Presentation.Controllers
         [ValidatePositiveInt("CategoryId")]
         public async Task<IActionResult> GetProductsByDepartment(int DepartmentId, CancellationToken cancellationToken = default)
         {
-            return Ok(await _productRepository.GetProductsByDepartment(DepartmentId,cancellationToken));
+            return Ok(await _productRepository.GetProductsByDepartmentAsync(DepartmentId,cancellationToken));
         }
 
         // ~/api/ The ~ means “start from the root of the application
@@ -32,7 +32,7 @@ namespace ECommerce.Presentation.Controllers
         [ValidatePositiveInt("CategoryId", "SectionId")]    
         public async Task<IActionResult> GetProductsBySectionint (int CategoryId, int SectionId, CancellationToken cancellationToken = default)
         {
-            return Ok(await _productRepository.GetProductsByCategoryBySection(CategoryId,SectionId,cancellationToken));
+            return Ok(await _productRepository.GetProductsByCategoryBySectionAsync(CategoryId,SectionId,cancellationToken));
         }
        
     }

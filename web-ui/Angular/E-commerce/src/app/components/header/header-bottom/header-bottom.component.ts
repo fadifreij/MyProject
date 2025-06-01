@@ -1,6 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CategoryService } from '../../../services/categoryService';
+import { DepartmentService } from '../../../services/departmentService';
 import { ClickOutsideDirective } from './click-outside.directive';
 
 enum Comp {
@@ -31,21 +33,32 @@ enum Comp {
             ]),
         ])
     ],
+    providers: [CategoryService, DepartmentService],
+    standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderBottomComponent {
-  isOpen :Record<Comp, boolean> ={
-    [Comp.Category]: false,
-    [Comp.Department]: true,
-  };
-  toggleList(Comp: string) {
-    const key = Comp as Comp;
-    this.isOpen[key] = !this.isOpen[key];
-  
-  } 
-  closeList(name : string) {
+    isOpen: Record<Comp, boolean> = {
+        [Comp.Category]: false,
+        [Comp.Department]: true,
+    };
+
+    private readonly categoryService = inject(CategoryService);
+    private readonly departmentService = inject(DepartmentService);
+    public categories: any;
+
+    constructor() {
+        this.categoryService.getCategories().subscribe(categories => { this.categories = categories; });
+    }
+
+    toggleList(Comp: string) {
+        const key = Comp as Comp;
+        this.isOpen[key] = !this.isOpen[key];
+
+    }
+    closeList(name: string) {
         const key = name as Comp;
         this.isOpen[key] = false;
     }
 
- }
+}

@@ -1,23 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 import { BaseService } from './baseService';
+import { isPlatformBrowser } from '@angular/common';
 @Injectable({ providedIn: 'root' })
-export class CategoryService extends BaseService<string> {
+export class CategoryService extends BaseService<Category> {
     private readonly CACHE_KEY = 'category_menu';
-
+   
     constructor(http: HttpClient) {
-        super(http, 'api/Categories');
+        const baseUrl = 'api/Categories';
+        super(http, baseUrl);
     }
 
-    getCategories(): Observable<string[]> {
-        const cachedCategory = localStorage.getItem(this.CACHE_KEY);
-        if (cachedCategory) {
-            return of(JSON.parse(cachedCategory));
-        } else {
-            return this.getAll().pipe(
-                tap(data => localStorage.setItem(this.CACHE_KEY, JSON.stringify(data)))
-            );
-        }
+    getCategories(): Observable<Category[]> {
+        return this.getCachedData<Category[]>(this.CACHE_KEY, () => this.getAll());
     }
+}
+
+
+export interface Category {
+    id: number;
+    categoryName:string;
 }
