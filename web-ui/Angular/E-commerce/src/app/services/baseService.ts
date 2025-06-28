@@ -3,6 +3,7 @@ import { Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 import { inject, PLATFORM_ID } from '@angular/core';
+import { setWithExpiry, getWithExpiry} from './localStorageService';
 export abstract class BaseService<T> {
     private Url: string;
 
@@ -42,12 +43,13 @@ export abstract class BaseService<T> {
     protected getCachedData<T>(key: string, fetchFn: () => Observable<T>): Observable<T> {
         const platformId = inject(PLATFORM_ID);
         if (isPlatformBrowser(platformId)) {
-            const cached = localStorage.getItem(key);
+           // const cached = localStorage.getItem(key);
+            const cached = getWithExpiry(key);
             if (cached) {
                 return of(JSON.parse(cached));
             } else {
                 return fetchFn().pipe(
-                    tap(data => localStorage.setItem(key, JSON.stringify(data)))
+                    tap(data => setWithExpiry(key, JSON.stringify(data)))
                 );
             }
         }

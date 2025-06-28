@@ -23,6 +23,5 @@ export class DepartmentService extends BaseService<Department> {
 }
 export interface Department {
     id: number;
-    categoryId: number;
-    categoryName: string;
+    departmentName: string;
 }

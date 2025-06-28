@@ -38,19 +38,27 @@ enum Comp {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderBottomComponent {
+   /* properties */ 
     isOpen: Record<Comp, boolean> = {
         [Comp.Category]: false,
         [Comp.Department]: true,
     };
-
+    selectedCategory: string = 'All Categories';
     private readonly categoryService = inject(CategoryService);
     private readonly departmentService = inject(DepartmentService);
-    public categories: any;
 
-    constructor() {
-        this.categoryService.getCategories().subscribe(categories => { this.categories = categories; });
+    categories$ = this.categoryService.getCategories();
+    departments$ = this.departmentService.getDepartments();
+
+
+
+ /* methods */
+    selectCategory(category: string, event: MouseEvent): void {
+        event.stopPropagation(); // Prevent closing the list immediately
+        this.selectedCategory = category;
+        this.toggleList('categories');
     }
-
+    
     toggleList(Comp: string) {
         const key = Comp as Comp;
         this.isOpen[key] = !this.isOpen[key];

@@ -7,28 +7,10 @@
                     <span>All departments</span>
                 </div>
                 <ul [@toggleList]="isOpen['departments'] ? 'open' : 'closed'" class="list__categories">
-                    <li><a href="#">Fresh Meat</a></li>
-                    <li><a href="#">Vegetables</a></li>
-                    <li><a href="#">Fruit & Nut Gifts</a></li>
-                    <li><a href="#">Fresh Berries</a></li>
-                    <li><a href="#">Ocean Foods</a></li>
-                    <li><a href="#">Butter & Eggs</a></li>
-                    <li><a href="#">Fastfood</a></li>
-                    <li><a href="#">Fresh Onion</a></li>
-                    <li><a href="#">Papayaya & Crisps</a></li>
-                    <li><a href="#">Oatmeal</a></li>
-                    <li><a href="#">Fresh Bananas</a></li>
-                    <li><a href="#">Fresh Meat</a></li>
-                    <li><a href="#">Vegetables</a></li>
-                    <li><a href="#">Fruit & Nut Gifts</a></li>
-                    <li><a href="#">Fresh Berries</a></li>
-                    <li><a href="#">Ocean Foods</a></li>
-                    <li><a href="#">Butter & Eggs</a></li>
-                    <li><a href="#">Fastfood</a></li>
-                    <li><a href="#">Fresh Onion</a></li>
-                    <li><a href="#">Papayaya & Crisps</a></li>
-                    <li><a href="#">Oatmeal</a></li>
-                    <li><a href="#">Fresh Bananas</a></li>
+                    @for(dep of departments$ | async ; track dep) {
+                    <li><a href="#">{{dep.departmentName}}</a></li>
+                    }
+
                 </ul>
             </div>
         </div>
@@ -39,12 +21,19 @@
                         <div class="hero__search__categories dropdown-wrapper" (click)="toggleList('categories')"
                             (appClickOutside)="closeList('categories')">
                             <div>
-                                All Categories
+                                {{ selectedCategory }}
                                 <span class="arrow_carrot-down"></span>
                             </div>
                             <ul [@toggleList]="isOpen['categories'] ? 'open' : 'closed'" class="list__cat">
-                                @for(cat of categories ; track cat) {
-                                <li><a href="#">{{cat.categoryName}}</a></li>
+                                <li (click)="selectCategory('All Categories', $event)"
+                                    [class.selected]="selectedCategory === 'All Categories'">
+                                    <a href="#">All Categories</a>
+                                </li>
+                                @for(cat of categories$ | async ; track cat) {
+                                <li
+                                    (click)="selectCategory(cat.categoryName, $event)"
+                                    [class.selected]="selectedCategory === cat.categoryName">
+                                    <a href="#">{{cat.categoryName}}</a></li>
                                 }
                             </ul>
                         </div>
